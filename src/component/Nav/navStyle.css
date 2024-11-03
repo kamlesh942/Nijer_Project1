@@ -1,0 +1,119 @@
+/* Resetting margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Header Styles */
+.header {
+  position: fixed; /* Fixes the header to the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff; /* Background color of the header */
+  border-bottom: 1px solid #ccc; /* Optional border for separation */
+  z-index: 1000;
+  display: flex;
+  flex-direction: column; /* Stack logo and navigation vertically */
+}
+
+/* Logo Section */
+.logo-section {
+  display: flex;
+  align-items: center;
+  padding: 10px; /* Spacing around the logo section */
+}
+
+.logo img {
+  width: 50px; /* Logo size */
+  height: auto;
+}
+
+/* Search Bar Styles */
+.search-bar {
+  flex-grow: 1; /* Allows the search bar to take available space */
+  display: flex; /* Aligns search inputs in a row */
+  margin-left: 20px; /* Spacing on the left */
+}
+
+.location-select,
+.search-input {
+  padding: 8px; /* Padding inside inputs */
+  margin-right: 10px; /* Space between inputs */
+  border: 1px solid #ccc; /* Border for inputs */
+  border-radius: 4px; /* Rounded corners */
+}
+
+.search-button {
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  border: none; /* No border for button */
+  border-radius: 4px; /* Rounded corners */
+  padding: 8px 12px; /* Button padding */
+  cursor: pointer; /* Pointer on hover */
+}
+
+/* Top Navigation Styles */
+.top-nav {
+  display: flex;
+  justify-content: space-between; /* Space between logo and links */
+  align-items: center; /* Center items vertically */
+  padding: 10px 20px; /* Padding for top nav */
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex; /* Aligns links in a row */
+}
+
+.nav-links a,
+.nav-links button {
+  margin-left: 20px; /* Space between links */
+  text-decoration: none; /* Remove underline from links */
+  color: #333; /* Link color */
+  font-size: 16px; /* Font size */
+  display: flex;
+  align-items: center; /* Aligns icon and text */
+}
+
+.nav-links button {
+  background: none; /* No background for button */
+  border: none; /* No border */
+  cursor: pointer; /* Pointer on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .logo img {
+      width: 40px; /* Smaller logo on mobile */
+  }
+
+  .nav-links {
+      flex-direction: column; /* Stack links vertically */
+      position: absolute; /* Fixes the position when expanded */
+      top: 60px; /* Position below header */
+      left: 0;
+      right: 0;
+      background-color: #ffffff; /* Background for dropdown */
+      display: none; /* Hide links initially */
+      z-index: 999; /* Ensure dropdown is above content */
+  }
+
+  .nav-links.show {
+      display: flex; /* Show links when toggled */
+  }
+
+  .nav-links a {
+      margin: 10px 0; /* Space between links vertically */
+  }
+}
+
+/* Add space at the top of the page content to prevent it from being covered by the fixed header */
+.content {
+  margin-top: 100px; /* Adjust this value based on the height of your header */
+}

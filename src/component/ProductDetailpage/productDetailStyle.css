@@ -1,0 +1,127 @@
+/* General styling for the product list container */
+.product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    margin-top: 10rem;
+    margin-bottom: 4rem;
+}
+
+/* Individual product card styling */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+    margin-top: auto;
+    box-sizing: border-box;
+}
+
+/* Image styling */
+.product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+/* Product details styling */
+.product-details {
+
+    text-align: center;
+    width: 100%;
+}
+
+.product-category {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.product-title {
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
+}
+
+.product-price {
+    color: #ff5722;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.product-discount {
+    font-size: 0.9rem;
+    color: #888;
+    text-decoration: line-through;
+}
+
+.product-rating {
+    font-size: 1rem;
+    color: #ffc107;
+}
+
+.product-reviews {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Button group styling */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 5rem;
+}
+
+.buy-now, .add-to-cart {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.buy-now {
+    background-color: #673ab7;
+    color: white;
+}
+
+.add-to-cart {
+    background-color: #e91e63;
+    color: white;
+}
+
+/* Responsive layout for larger screens */
+@media (min-width: 600px) {
+    .product-card {
+        flex-direction: row;
+    }
+
+    .product-image {
+        width: 50%;
+        margin-right: 1rem;
+    }
+
+    .product-details {
+        width: 50%;
+        text-align: left;
+    }
+
+    .button-group {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .buy-now, .add-to-cart {
+        width: 48%;
+    }
+}

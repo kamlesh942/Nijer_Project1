@@ -1,0 +1,59 @@
+/* Resetting margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  min-height: 100vh; /* Ensures the body takes at least the full height of the viewport */
+  display: flex;
+  flex-direction: column; /* Stacks footer at the bottom */
+}
+
+/* Footer Styles */
+.footer {
+  position: fixed; 
+  bottom: 0; /* Aligns to the bottom of the viewport */
+  left: 0;
+  width: 100%;
+  background-color: #333; /* Dark background for the footer */
+  color: #fff; /* White text color */
+  text-align: center; /* Center text */
+  padding: 15px 0; /* Vertical padding */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex; /* Aligns icons in a row */
+  justify-content: center; /* Center icons horizontally */
+  gap: 20px; /* Space between icons */
+}
+
+.icon {
+  color: #fff; /* White color for icons */
+  font-size: 24px; /* Size of icons */
+  transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+.icon:hover {
+  color: #007bff; /* Change color on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .footer {
+      padding: 10px 0; /* Adjust padding for smaller screens */
+  }
+
+  .icon {
+      font-size: 20px; /* Slightly smaller icons on mobile */
+  }
+}
+
+/* Ensuring content above footer has enough space */
+.content {
+  flex: 1; /* Allows the content area to expand and take remaining space */
+}
