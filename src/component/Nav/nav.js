@@ -72,6 +72,21 @@ const Header = () => {
         
       </div>
     </div>
+    {showForm && (
+      <div className="floating-form">
+        <h2>{isSignUp ? 'Sign Up' : 'Sign In'}</h2>
+        <form>
+          <input type="text" placeholder="Username" required />
+          {isSignUp && <input type="email" placeholder="Email" required />}
+          <input type="password" placeholder="Password" required />
+          <button type="submit">{isSignUp ? 'Register' : 'Login'}</button>
+          <button type="button" onClick={toggleForm}>Close</button>
+        </form>
+        <button className="toggle-link" onClick={() => setIsSignUp(!isSignUp)}>
+          {isSignUp ? 'Already have an account? Sign In' : 'Don\'t have an account? Sign Up'}
+        </button>
+      </div>
+    )}
 
             {/* Search Section */}
             
