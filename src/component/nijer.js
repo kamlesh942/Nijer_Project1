@@ -6,6 +6,7 @@ import { MdHome, MdHelpOutline, MdSell } from 'react-icons/md';
 // import { AiOutlineShopping } from 'react-icons/ai';
 import { Link } from "react-router-dom";
 // import Header from './Nav/nav.js'
+import Footer from './Footer/footer.js'
 
 function Nijer() {
   // Mock product data
@@ -179,11 +180,7 @@ function Nijer() {
     </div>
 
     {/* Bottom Navigation */}
-    <div className="bottom-nav">
-      <a href="/"><FaFacebook /> Facebook</a>
-      <a href="/"><FaInstagram /> Instagram</a>
-      <a href="/"><FaYoutube /> YouTube</a>
-    </div>
+   <Footer/>
   </div>
   );
 }
