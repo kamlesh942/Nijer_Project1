@@ -24,7 +24,7 @@ function AddCard() {
   return (
     <div>
       <Header />
-          <div className="App">
+       <div className="App">
       
       <div className="product-container">
         <ProductCard
