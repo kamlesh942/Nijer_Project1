@@ -1,0 +1,286 @@
+/* Resetting margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header Styles */
+  .header {
+    position: fixed; /* Fixes the header to the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #9aaac7; /* Background color of the header */
+    border-bottom: 1px solid #ccc; /* Optional border for separation */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column; /* Stack logo and navigation vertically */
+  }
+  
+  /* Logo Section */
+  .logo-section {
+    display: flex;
+    align-items: center;
+    padding: 10px; /* Spacing around the logo section */
+  }
+  
+  .logo img {
+    width: 50px; /* Logo size */
+    height: auto;
+  }
+  
+  /* Search Bar Styles */
+  .search-bar {
+    flex-grow: 1; /* Allows the search bar to take available space */
+    display: flex; /* Aligns search inputs in a row */
+    margin-left: 20px; /* Spacing on the left */
+  }
+  
+  .location-select,
+  .search-input {
+    padding: 8px; /* Padding inside inputs */
+    margin-right: 10px; /* Space between inputs */
+    border: 1px solid #ccc; /* Border for inputs */
+    border-radius: 4px; /* Rounded corners */
+  }
+  
+  .search-button {
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* No border for button */
+    border-radius: 4px; /* Rounded corners */
+    padding: 8px 12px; /* Button padding */
+    cursor: pointer; /* Pointer on hover */
+  }
+  
+  /* Top Navigation Styles */
+  .top-nav {
+    display: flex;
+    justify-content: space-between; /* Space between logo and links */
+    align-items: center; /* Center items vertically */
+    padding: 10px 20px; /* Padding for top nav */
+  }
+  
+  /* Navigation Links */
+  .nav-links {
+    display: flex; /* Aligns links in a row */
+    align-items: center;
+  }
+  
+  .nav-links a,
+  .nav-links button {
+    margin-left: 20px; /* Space between links */
+    text-decoration: none; /* Remove underline from links */
+    color: #333; /* Link color */
+    font-size: 16px; /* Font size */
+    display: flex;
+    align-items: center; /* Aligns icon and text */
+  }
+  
+  .nav-links button {
+    background: none; /* No background for button */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer on hover */
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .logo img {
+        width: 40px; /* Smaller logo on mobile */
+    }
+  
+    .nav-links {
+        flex-direction: column; /* Stack links vertically */
+        position: absolute; /* Fixes the position when expanded */
+        top: 60px; /* Position below header */
+        left: 0;
+        right: 0;
+        background-color: #ffffff; /* Background for dropdown */
+        display: none; /* Hide links initially */
+        z-index: 999; /* Ensure dropdown is above content */
+    }
+  
+    .nav-links.show {
+        display: flex; /* Show links when toggled */
+    }
+  
+    .nav-links a {
+        margin: 10px 0; /* Space between links vertically */
+    }
+  }
+  .floating-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    height: 500px;
+    width: 500px;
+  }
+  
+  .floating-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .floating-form input {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .floating-form button {
+    width: 60%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #191c3d;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 20%;
+  }
+  
+  .floating-form .toggle-link {
+    text-align: center;
+    color: #007bff;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+  }
+  
+  /* Product List */
+  .product-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1200px) {
+    .product-list {
+      grid-template-columns: repeat(3, 1fr); /* 3 cards per row for smaller screens */
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .product-list {
+      grid-template-columns: repeat(2, 1fr); /* 2 cards per row for tablet-sized screens */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .product-list {
+      grid-template-columns: 1fr; /* 1 card per row for mobile screens */
+    }
+  }
+  
+  .product-card {
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    /* text-align: center; */
+    height: 400px;
+  
+  }
+  
+  .product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .product-card h3 {
+    font-size: 18px;
+    
+    margin: 10px 0;
+  }
+  
+  .product-card p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+  }
+  
+  .product-card .buttons {
+    margin-top: 10px;
+  }
+  
+  .product-card .buttons button {
+    background-color: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 5px;
+  }
+  
+  .product-card .buttons button:hover {
+    background-color: #007bff;
+  }
+  
+  /* About Section */
+  .about-section {
+    background-color: #fff;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .about-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .about-section p {
+    line-height: 1.6;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  /* Bottom Navigation */
+  .bottom-nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .bottom-nav a {
+    color: #fff;
+    margin: 0 15px;
+    font-size: 18px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .bottom-nav a:hover {
+    color: #007bff;
+  }
+  /* Add space at the top of the page content to prevent it from being covered by the fixed header */
+  .content {
+    margin-top: 100px; /* Adjust this value based on the height of your header */
+  }

@@ -1,0 +1,105 @@
+  /* Product Card styling */
+  .product-card {
+    display: flex;
+    flex-direction: column; /* Changed to row to align image and details side by side */
+    width: 100%;
+    max-width: 800px; /* Increased width to accommodate image and details side by side */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: left;
+    margin-left: 25%;
+    margin-bottom: 20%;
+  }
+  
+  /* Adjust the product image size and alignment */
+  .product-image {
+    width: 50%;
+    height: 600px; /* Adjust the width to take half of the card */
+    border-right: 1px solid #ddd;
+    border-radius: 8px 0 0 8px;
+  }
+  
+  .product-details {
+    padding: 15px;
+    width: 50%; /* Make details occupy the other half of the card */
+  }
+  
+  /* Individual product details */
+  .product-detail-title {
+    font-size: 0.9em;
+    color: #888;
+    margin: 0 0 5px;
+  }
+  
+  .product-title {
+    font-size: 1.1em;
+    margin: 0 0 5px;
+    font-weight: bold;
+  }
+  
+  .special-price {
+    color: #d9534f;
+    font-size: 1em;
+    margin: 5px 0;
+  }
+  
+  .price {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .discount {
+    color: #6c757d;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+  }
+  
+  .original-price {
+    text-decoration: line-through;
+    color: #6c757d;
+  }
+  
+  .ratings {
+    color: #6c757d;
+    font-size: 0.9em;
+  }
+  
+  .place-order {
+    background-color: #d9534f;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .place-order:hover {
+    background-color: #c9302c;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 600px) {
+    .product-card {
+      flex-direction: column; /* Stack image and details vertically on smaller screens */
+      max-width: 300px;
+    }
+  
+    .product-image {
+      width: 100%; /* Make image full width */
+      border-radius: 8px 8px 0 0;
+      border-right: none;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    .product-details {
+      width: 100%; /* Make details full width */
+    }
+  }
+  

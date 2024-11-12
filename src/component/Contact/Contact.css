@@ -1,0 +1,167 @@
+/* Background and Layout */
+.contact-page {
+    font-family: Arial, sans-serif;
+    padding: 10%;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #000;
+}
+
+/* Ensure .contact-content fills the available vertical space */
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    color: #333;
+    min-height: 70vh; /* Ensures it takes at least 70% of the viewport */
+    justify-content: space-between; /* Align content with spacing */
+    padding-bottom: 20px;
+}
+
+/* Contact Container Styling */
+.contact-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background: #f5f7fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    min-height: 400px; /* Increase minimum height for a more spacious layout */
+}
+
+.contact-info, .contact-form {
+    flex: 1 1 45%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info h2, .contact-form h2 {
+    color: #2d98da;
+    margin-bottom: 10px;
+    align-self: center;
+}
+
+.contact-form {
+    text-align: center;
+}
+.contact-form form{
+    text-align: left;
+}
+/* Contact Details */
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    color: #333;
+    padding: 10px;
+}
+
+.contact-item .icon {
+    color: #1abc9c;
+    margin-right: 10px;
+}
+
+/* Form Styling */
+.contact-form p{
+    margin: 10px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: #1abc9c;
+    box-shadow: 0 0 6px rgba(26, 188, 156, 0.4);
+}
+
+.contact-form button {
+    padding: 10px 20px;
+    background: #2d98da;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+    background: #1a73e8;
+}
+
+/* Support Links */
+.support-links {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 200px; /* Added minimum height for balanced content area */
+}
+
+.support-options {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+
+.support-option {
+    display: flex;
+    align-items: center;
+    color: #333;
+    margin-top: 15px;
+}
+
+.support-option .icon {
+    color: #ff6b6b;
+    margin-right: 10px;
+}
+
+.support-option a {
+    color: #2d98da;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* FAQ Section */
+.faq-section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.faq-section h2 {
+    color: #2d98da;
+}
+
+.faq-item h3 {
+    margin: 10px 0 5px;
+    color: #000;
+    cursor: pointer;
+    background-color: #2d98da;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.faq-item p {
+    margin: 0;
+    color: #555;
+}

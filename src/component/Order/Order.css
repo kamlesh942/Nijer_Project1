@@ -1,0 +1,153 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  .App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    background-color: #c0d6e4;
+  }
+  
+   /* .header .back-btn{
+    font-size: 20px;
+    background: none;
+    background-color: #c0d6e4;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-left: 1rem;
+  } */
+  
+  /* .header .logo {
+    height: 40px;
+  } */
+  
+  /* Section */
+  .section {
+    width: 100%;
+    background-color: #e6e6e6;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .section h3 {
+    font-size: 16px;
+  }
+  
+  .change-btn {
+    background-color: #d09a92;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .address-text {
+    font-size: 14px;
+    color: #333;
+    margin-top: 10px;
+  }
+  
+  /* Payment Section */
+  .payment-section {
+    width: 100%;
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .payment-section label {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  
+  .captcha-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .captcha-text {
+    font-size: 18px;
+    color: green;
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+  }
+  
+  .refresh-btn {
+    margin-right: 10px;
+    background-color: #ccc;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .captcha-container input {
+    flex-grow: 1;
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .confirm-btn {
+    background-color: #d09a92;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .header, .section, .payment-section {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .captcha-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .captcha-container input,
+    .confirm-btn {
+      width: 100%;
+    }
+  }
