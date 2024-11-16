@@ -1,8 +1,8 @@
 // src/components/ProductCard.js
-import React from 'react';
-import styled from 'styled-components';
-import { FiPhone } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import React from "react";
+import styled from "styled-components";
+import { FiPhone } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const CardContainer = styled.div`
   width: 200px;
@@ -76,13 +76,14 @@ const BuyButton = styled(Button)`
     background-color: #330d3d;
   }
 `;
-
+/*
 const ProductCard = () => {
   // Default data for demonstration
   const product = {
-    imageUrl: 'https://image26.stylesimo.com/o_img/2017/08/09/231420-10380357/women-s-elegant-solid-evening-pleated-chiffon-dress.jpg',
+    avatar:
+      "https://image26.stylesimo.com/o_img/2017/08/09/231420-10380357/women-s-elegant-solid-evening-pleated-chiffon-dress.jpg",
     name: "NO. 303 Crackle due Drop Blouse",
-    location: "Surat, Gujarat",
+    place: "Surat, Gujarat",
     price: "₹ 299/peace",
   };
 
@@ -90,21 +91,52 @@ const ProductCard = () => {
     alert("Contact number: +91-XXXXXXXXXX");
   };
 
-  const handleBuyNow = () => {
-    alert("Redirecting to purchase page..."); 
-  };
+  // const handleBuyNow = () => {
+  //   alert("Redirecting to purchase page...");
+  // };
 
   return (
     <CardContainer>
-      <Image src={product.imageUrl} alt={product.name} />
+      <Image src={product.avatar} alt={product.name} />
       <Content>
         <Title>{product.name}</Title>
-        <Location>{product.location}</Location>
+        <Location>{product.place}</Location>
         <Price>{product.price}</Price>
         <ViewButton onClick={handleViewNumber}>
           <FiPhone /> View Number
         </ViewButton>
-        <Link to="/BuyNow"><BuyButton >Buy Now</BuyButton></Link>
+        <Link to="/BuyNow">
+          <BuyButton>Buy Now</BuyButton>
+        </Link>
+      </Content>
+    </CardContainer>
+  );
+};*/
+
+const ProductCard = ({ product }) => {
+  const { avatar, name, place, price } = product; // If `product.data` is not a valid path
+
+  const handleViewNumber = () => {
+    alert("Contact number: +91-XXXXXXXXXX");
+  };
+
+  return (
+    <CardContainer>
+      <Image
+        src={avatar || "https://via.placeholder.com/150"}
+        alt={`${name || "Product"} image`}
+      />
+
+      <Content>
+        <Title>{name}</Title>
+        <Location>{place}</Location>
+        <Price>Price: ₹ {price}</Price>
+        <ViewButton onClick={handleViewNumber}>
+          <FiPhone /> View Number
+        </ViewButton>
+        <Link to="/BuyNow">
+          <BuyButton>Buy Now</BuyButton>
+        </Link>
       </Content>
     </CardContainer>
   );

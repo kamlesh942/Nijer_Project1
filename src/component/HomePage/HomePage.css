@@ -120,4 +120,7 @@
   .view-btn:hover, .buy-btn:hover {
     background-color: #161449;
   }
+  .txt{
+    text-align: center;
+  }
   
