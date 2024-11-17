@@ -21,7 +21,7 @@ const AdminPanel = () => {
           Create Blog
         </Link>
         <Link
-          to="/admin/getcontacts"
+          to="/admin/getallcontacts"
           className="flex-sm-fill text-sm-center nav-link"
         >
           Contact Messages
@@ -37,6 +37,12 @@ const AdminPanel = () => {
           className="flex-sm-fill text-sm-center nav-link"
         >
           Add product into shop
+        </Link>
+        <Link
+          to="/admin/getorders"
+          className="flex-sm-fill text-sm-center nav-link"
+        >
+          All Orders Details
         </Link>
       </nav>
       <Outlet />

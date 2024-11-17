@@ -134,8 +134,8 @@ const ProductCard = ({ product }) => {
         <ViewButton onClick={handleViewNumber}>
           <FiPhone /> View Number
         </ViewButton>
-        <Link to="/BuyNow">
-          <BuyButton>Buy Now</BuyButton>
+        <Link to="/AddToCartBuyNow" state={{ product }}>
+          <BuyButton>Shop Now</BuyButton>
         </Link>
       </Content>
     </CardContainer>

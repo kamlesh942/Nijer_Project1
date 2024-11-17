@@ -1,0 +1,62 @@
+.order-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.order-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.order-header h3 {
+    font-size: 20px;
+    color: #333;
+}
+
+.order-content h4 {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #555;
+}
+
+.order-content p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.order-items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.order-items-table th,
+.order-items-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.order-items-table th {
+    background-color: #f9f9f9;
+    font-weight: bold;
+}
+
+.item-avatar {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.order-footer {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #666;
+}

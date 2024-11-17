@@ -1,10 +1,24 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function ProductDetail() {
   // Default data for the product
   //setProduct
-  const [product] = useState({
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { product } = location.state || {}; // Access the passed product data
+
+  if (!product) {
+    return <p>No product data available.</p>;
+  }
+  const handleAddToCart = () => {
+    let cart = JSON.parse(localStorage.getItem("cart")) || []; // Fetch cart or initialize
+    cart.push(product); // Add the current product
+    localStorage.setItem("cart", JSON.stringify(cart)); // Save back to localStorage
+    navigate("/addCard"); // Redirect to the cart page
+  };
+  /* const [product] = useState({
     image: "https://www.pngmart.com/files/4/Dress-PNG-Picture.png", // Replace this with the actual image URL if available
     title: "Round Neck Women Blouse",
     specialPrice: 369,
@@ -14,6 +28,14 @@ function ProductDetail() {
     ratingsCount: 1832,
     reviewsCount: 125,
   });
+  
+  <Link
+              to="/addCard"
+              style={{ color: "white", textDecoration: "none" }}
+              state={{ product }}
+            >
+              Add To Cart
+            </Link>*/
 
   return (
     <div
@@ -29,8 +51,8 @@ function ProductDetail() {
       {/* Product Image */}
       <div style={{ flex: "1", marginRight: "20px" }}>
         <img
-          src={product.image}
-          alt={product.title}
+          src={product.avatar}
+          alt={product.name}
           style={{ width: "100%", borderRadius: "8px" }}
         />
       </div>
@@ -38,25 +60,21 @@ function ProductDetail() {
       {/* Product Details */}
       <div style={{ flex: "2", marginLeft: "50px" }}>
         <h4>Product Detail</h4>
-        <h3 style={{ margin: "10px 0", fontWeight: "bold" }}>
-          {product.title}
-        </h3>
+        <h3 style={{ margin: "10px 0", fontWeight: "bold" }}>{product.name}</h3>
 
         <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }}>
-          Special price ₹{product.specialPrice}
+          Special price ₹{product.price}
         </p>
-        <p style={{ fontSize: "14px", color: "#555" }}>
-          {product.discount}% off
-        </p>
+        <p style={{ fontSize: "14px", color: "#555" }}>{product.price}% off</p>
         <p style={{ textDecoration: "line-through", color: "#888" }}>
-          ₹{product.originalPrice}
+          ₹{product.price}
         </p>
 
         <p style={{ fontSize: "14px", color: "#333" }}>
-          <span style={{ fontWeight: "bold" }}>{product.rating} </span>
+          <span style={{ fontWeight: "bold" }}>{product.price} </span>
           <span>☆ </span>
           <span style={{ color: "#555" }}>
-            {product.ratingsCount} ratings and {product.reviewsCount} reviews
+            {product.price} ratings and {product.price} reviews
           </span>
         </p>
 
@@ -77,27 +95,31 @@ function ProductDetail() {
             <Link
               to="/ConfirmOrder"
               style={{ color: "white", textDecoration: "none" }}
+              state={{ product }}
             >
               Buy Now
             </Link>
           </button>
 
-          <button
+          <Link
             style={{
+              display: "inline-block",
               width: "50%",
               padding: "10px 20px",
-              backgroundColor: "#c2185b", // Pink color
+              backgroundColor: "#c2185b",
               color: "white",
+              textDecoration: "none",
               border: "none",
               borderRadius: "4px",
               cursor: "pointer",
               fontWeight: "bold",
+              textAlign: "center",
             }}
+            state={{ product }}
+            onClick={handleAddToCart} // Call the function before navigating
           >
-            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
-              Add To Cart
-            </Link>
-          </button>
+            Add To Cart
+          </Link>
         </div>
       </div>
     </div>

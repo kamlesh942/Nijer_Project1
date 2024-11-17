@@ -398,35 +398,6 @@ const deleteCart = asyncHandler(async (req, res) => {
     res.status(500).send("Server error");
   }
 });
-router.post("/contact", (req, res) => {
-  const { name, email, message } = req.body;
-
-  // Mail options
-  const mailOptions = {
-    from: email,
-    to: "owneremail@example.com", // The owner's email address
-    subject: `New Message from ${name}`,
-    text: `
-      You have a new contact form message:
-
-      Name: ${name}
-      Email: ${email}
-      
-      Message:
-      ${message}
-    `,
-  };
-
-  // Send the email
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log("Error sending email:", error);
-      return res.status(500).json({ message: "Error sending message" });
-    }
-    console.log("Email sent:", info.response);
-    res.status(200).json({ message: "Message sent successfully" });
-  });
-});
 
 export {
   registerUser,

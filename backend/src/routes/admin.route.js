@@ -14,6 +14,9 @@ import {
   getAllnewProducts,
   createshop,
   getAllShop,
+  getAllcontacts,
+  createOrder,
+  getOrders,
 } from "../controller/admin.controller.js";
 
 const router = express.Router();
@@ -71,5 +74,8 @@ router.post(
   createshop
 );
 router.get("/shopproducts", getAllShop);
+router.get("/getallcontacts", getAllcontacts);
 
+router.post("/orders", createOrder);
+router.get("/getorders", getOrders);
 export default router;

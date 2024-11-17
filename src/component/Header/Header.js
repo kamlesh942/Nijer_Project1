@@ -198,7 +198,7 @@ const Header = () => {
         </div>
 
         <div className="nav-links">
-          <Link to="/HomePage">
+          <Link to="/">
             <FaHome /> Home
           </Link>
           <Link to="/addCard">

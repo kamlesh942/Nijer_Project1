@@ -21,7 +21,7 @@ import GetContact from "./component/Contact/getcontact";
 import AdminPanel from "./component/Admin/Admin";
 import NewArrival from "./component/newarrival/Newarrive";
 import AddShop from "./component/createShop/CreateShop";
-
+import StoreOrder from "./component/Storeorders/stororder.js";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -40,9 +40,10 @@ const router = createBrowserRouter(
       <Route path="/admin" element={<AdminPanel />}>
         <Route path="/admin/create-product" element={<CreateProduct />} />
         <Route path="/admin/create-blog" element={<CreateBlog />} />
-        <Route path="/admin/getcontacts" element={<GetContact />} />
+        <Route path="/admin/getallcontacts" element={<GetContact />} />
         <Route path="/admin/new-product" element={<NewArrival />} />
         <Route path="/admin/create-shop" element={<AddShop />} />
+        <Route path="/admin/getorders" element={<StoreOrder />} />
       </Route>
     </>
   )

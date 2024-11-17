@@ -7,6 +7,7 @@ import { APIResponse } from "../utils/apiresponse.js";
 import { Product } from "../models/product.model.js";
 import { Shop } from "../models/shop.model.js";
 import { Contact } from "../models/contact.model.js";
+import { Order } from "../models/order.model.js";
 
 const getAdmin = asyncHandler((req, res) => {
   res.redirect("/Admin");
@@ -287,7 +288,77 @@ const getAllShop = asyncHandler(async (req, res) => {
     res.status(500).json({ message: "Error fetching posts" });
   }
 });
+const getAllcontacts = asyncHandler(async (req, res) => {
+  try {
+    const getcontact = await Contact.find({}).sort({ createdAt: -1 }); // Sorting by creation date, newest first
+    res.status(200).json(getcontact);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching posts" });
+  }
+});
 
+// Controller to handle order creation
+const createOrder = asyncHandler(async (req, res) => {
+  const { address, orderSummary, paymentMethod } = req.body;
+
+  // Validate incoming data
+  if (!address || !Array.isArray(orderSummary) || !paymentMethod) {
+    return res.status(400).json({ error: "All fields are required." });
+  }
+
+  try {
+    // Save order to the database
+    const newOrder = new Order({
+      address,
+      orderSummary,
+      paymentMethod,
+    });
+
+    await newOrder.save();
+
+    res.status(201).json({
+      message: "Order created successfully!",
+      order: newOrder,
+    });
+  } catch (error) {
+    console.error("Error creating order:", error);
+    res.status(500).json({ error: "Server error. Please try again later." });
+  }
+});
+const getOrders = asyncHandler(async (req, res) => {
+  try {
+    // Optional query parameters
+    const { paymentMethod, startDate, endDate } = req.query;
+
+    // Build the query object
+    const query = {};
+
+    if (paymentMethod) {
+      query.paymentMethod = paymentMethod;
+    }
+
+    if (startDate || endDate) {
+      query.createdAt = {};
+      if (startDate) {
+        query.createdAt.$gte = new Date(startDate);
+      }
+      if (endDate) {
+        query.createdAt.$lte = new Date(endDate);
+      }
+    }
+
+    // Fetch orders from the database
+    const orders = await Order.find(query).sort({ createdAt: -1 });
+
+    res.status(200).json({
+      message: "Orders retrieved successfully!",
+      orders,
+    });
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    res.status(500).json({ error: "Server error. Please try again later." });
+  }
+});
 export {
   deleteBlog,
   updateBlog,
@@ -302,4 +373,7 @@ export {
   getAllnewProducts,
   createshop,
   getAllShop,
+  getAllcontacts,
+  createOrder,
+  getOrders,
 };
