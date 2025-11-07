@@ -2,79 +2,28 @@
 import React, { useState, useEffect } from "react";
 import "./HomePage.css";
 import ProductCard from "../Productgrid/productgrid";
-import FirstPage from "./FirstPage";
 import axios from "axios";
 
 const HomePage = () => {
-  //setLocation
+  // Default location
   const [location] = useState("All India");
+
+  // Filter states
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [maxPrice, setMaxPrice] = useState("");
 
-  const handleSearch = () => {
-    // Implement search functionality here
-    alert(`Searching for "${searchQuery}" in "${location}"`);
-  };
-  /* const products = [
-    {
-      id: 1,
-      avatar: "https://via.placeholder.com/150",
-      name: "NO. 303 Crackle due Drop Blouse",
-      place: "Surat, Gujarat",
-      price: 299,
-    },
-    {
-      id: 2,
-      avatar: "https://via.placeholder.com/150",
-      name: "Stylish Men's Jacket",
-      place: "Mumbai, Maharashtra",
-      price: 999,
-    },
-    {
-      id: 3,
-      avatar: "https://via.placeholder.com/150",
-      name: "Elegant Women's Dress",
-      place: "Delhi, India",
-      price: 599,
-    },
-    {
-      id: 3,
-      avatar: "https://via.placeholder.com/150",
-      name: "Elegant Women's Dress",
-      place: "Delhi, India",
-      price: 599,
-    },
-    {
-      id: 3,
-      avatar: "https://via.placeholder.com/150",
-      name: "Elegant Women's Dress",
-      place: "Delhi, India",
-      price: 599,
-    },
-    {
-      id: 3,
-      avatar: "https://via.placeholder.com/150",
-      name: "Elegant Women's Dress",
-      place: "Delhi, India",
-      price: 599,
-    },
-    {
-      id: 3,
-      avatar: "https://via.placeholder.com/150",
-      name: "Elegant Women's Dress",
-      place: "Delhi, India",
-      price: 599,
-    },
-  ];*/
-
+  // Product states
   const [productData, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
+  // ✅ Fetch all products initially
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:2022/api/admin/products"
-        ); // Adjust URL as needed
-        setProducts(response.data); // Assuming response.data is an array of products
+        const response = await axios.get("http://localhost:2022/api/admin/products");
+        setProducts(response.data);
+        setFilteredProducts(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -82,6 +31,40 @@ const HomePage = () => {
 
     fetchProducts();
   }, []);
+
+  // ✅ Real-time combined filtering (Name + Category + Single Price)
+  useEffect(() => {
+    let filtered = [...productData];
+
+    // 1️⃣ Filter by name
+    const query = searchQuery.trim().toLowerCase();
+    if (query !== "") {
+      filtered = filtered.filter((product) =>
+        product.name.toLowerCase().includes(query)
+      );
+    }
+
+    // 2️⃣ Filter by category
+    if (selectedCategory !== "All") {
+      filtered = filtered.filter(
+        (product) =>
+          product.category &&
+          product.category.toLowerCase() === selectedCategory.toLowerCase()
+      );
+    }
+
+    // 3️⃣ Filter by price (<= input value)
+    if (maxPrice !== "") {
+      const priceLimit = Number(maxPrice);
+      filtered = filtered.filter(
+        (product) => Number(product.price) <= priceLimit
+      );
+    }
+
+    setFilteredProducts(filtered);
+  }, [searchQuery, selectedCategory, maxPrice, productData]);
+
+  // Inline style
   const styles = {
     sectionTitle: {
       fontSize: "1.5rem",
@@ -89,46 +72,73 @@ const HomePage = () => {
       marginBottom: "20px",
     },
   };
+
   return (
     <div>
-      {/* Search Container */}
+      {/* 🔎 Search Section */}
       <div className="search-container">
-        <h2>Search for products & find verified sellers near you</h2>
-        <div className="search-box">
-          <button className="icon-button">
-            <span role="img" aria-label="location">
-              &#x1F4CD;
-            </span>{" "}
-            {location}
-          </button>
-          <input
-            type="text"
-            className="search-input"
-            placeholder="Search Product here"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <button className="icon-button">
-            <span role="img" aria-label="microphone">
-              &#x1F3A4;
-            </span>
-          </button>
-          <button className="icon-button search-btn" onClick={handleSearch}>
-            <span role="img" aria-label="search">
-              &#x1F50D;
-            </span>
-          </button>
-        </div>
-      </div>
+  <h2>Search and Filter Products Easily</h2>
+  {/* Right side search box */}
+    <div className="search-box">
+      <button className="icon-button">
+        <span role="img" aria-label="location">📍</span> {location}
+      </button>
+      <input
+        type="text"
+        className="search-input"
+        placeholder="Search Product here"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+      <button className="icon-button">
+        <span role="img" aria-label="microphone">🎤</span>
+      </button>
+      <button className="icon-button search-btn">
+        <span role="img" aria-label="search">🔍</span>
+      </button>
+    </div>
+
+  <div className="search-filter-wrapper">
+    
+    {/* Left side filters */}
+    <div className="filter-container">
+      <label>Category</label>
+      <select
+        className="filter-dropdown"
+        value={selectedCategory}
+        onChange={(e) => setSelectedCategory(e.target.value)}
+      >
+        <option value="All">All Categories</option>
+        <option value="Shirt">Shirt</option>
+        <option value="Pant">Pant</option>
+        <option value="Blouse">Blouse</option>
+        <option value="Saree">Saree</option>
+        <option value="Dress">Dress</option>
+      </select>
+
+      <label>Max Price (₹)</label>
+      <input
+        type="number"
+        className="price-input"
+        placeholder="e.g. 500"
+        value={maxPrice}
+        onChange={(e) => setMaxPrice(e.target.value)}
+      />
+    </div>
+
+    
+  </div>
+</div>
+
+
+      {/* 🛍️ Product Section */}
+      <h2 style={styles.sectionTitle}>Products</h2>
+
       <div className="product-card-section">
-        <FirstPage />
-      </div>
-      <h2 style={styles.sectionTitle}>products</h2>
-      <div className="product-card-section">
-        {productData.length === 0 ? (
-          <p>No products available.</p>
+        {filteredProducts.length === 0 ? (
+          <p>No products found.</p>
         ) : (
-          productData.map((product) => (
+          filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))
         )}
